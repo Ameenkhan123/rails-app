@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  timeout: 5000
+  encoding: unicode
+  pool: 5
+  host: localhost
+  port: 5432
+  username: postgres
+  password: ''
+
+
+development:
+  <<: *default
+  database: rails-app_development
+
+ 
+test:
+  <<: *default
+  database: rails-app_test
+
+production:
+  <<: *default
+  database: rails-app_production
+  username: rails-app
+  password: <%= ENV['RAILS-APP_DATABASE_PASSWORD'] %>
